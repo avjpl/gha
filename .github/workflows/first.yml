@@ -3,7 +3,7 @@ name: first
 on: [push]
 
 jobs:
-  job1:
+  ubuntu-latest:
     name: First job
     runs-on: ubuntu-latest
     steps:
@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Step two
         run: date
-  job2:
+  windows-latest:
     name: Second job
     runs-on: windows-latest
     steps:
@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Step two
         run: "Get-Date"
-  job3:
+  macos-latest:
     name: Third job
     runs-on: macos-latest
     steps:
@@ -27,7 +27,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Step two
         run: date
-  job4:
+  macos-10:
+    needs: [macos-latest, ubuntu-latest, windows-latest]
     name: Fourth job
     runs-on: macos-10.15
     steps:
